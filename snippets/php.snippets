@@ -272,3 +272,18 @@ snippet ns
 	namespace ${1:Vendor}\${2:Bundle}\${3:BundleName};
 snippet use
 	use ${1:Symfony}\${2:Component}\${3:ComponentName};
+snippet ftc
+	namespace ${1:Vendor}\Bundle\${2:BundleName}Bundle\Tests\Controller;
+	
+	use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+	
+	class ${3:ControllerName}ControllerTest extends WebTestCase
+	{
+	    public function setUp()
+	    {
+	    }
+	
+	    public function tearDown()
+	    {
+	    }
+	}

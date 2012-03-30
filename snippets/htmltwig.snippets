@@ -14,3 +14,11 @@ snippet macro
 	{% endmacro %}
 snippet route
 	'${1:Vendor}${2:BundleName}Bundle_${3:ControllerName}_${4:ActionName}'${5:}
+snippet if
+	{% if ${1:condition} %}
+	    ${2:}
+	{% endif %}
+snippet for
+	{% for ${1:item} in ${2:list} %}
+	    ${2:}
+	{% endfor %}
