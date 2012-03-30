@@ -1,0 +1,16 @@
+snippet {{
+	{{ ${1} }}
+snippet {%
+	{% ${1} %}
+snippet extend
+	{% extends '${1:Vendor}${2:BundleName}Bundle:${3:ControllerName}:${4:view}.html.twig'
+snippet block
+	{% block ${1:block_name} %}
+	    ${2:}
+	{% endblock %}
+snippet macro
+	{% macro ${1:macro_name}(${2:})  %}
+	    ${3:}
+	{% endmacro %}
+snippet route
+	'${1:Vendor}${2:BundleName}Bundle_${3:ControllerName}_${4:ActionName}'${5:}
