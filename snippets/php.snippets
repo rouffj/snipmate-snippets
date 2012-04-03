@@ -287,3 +287,34 @@ snippet ftc
 	    {
 	    }
 	}
+snippet addopt
+	->addOption('${1:cmd-name}', ${2:'shortcut'}, InputOption::VALUE_${3:OPTIONAL}, '${4:cmd description}')
+snippet cmdc
+	use Symfony\Component\Console\Command\Command;
+	use Symfony\Component\Console\Input\InputOption;
+	use Symfony\Component\Console\Input\InputInterface;
+	use Symfony\Component\Console\Output\OutputInterface;
+	use Symfony\Component\Console\Output\Output;
+	
+	class ${1:Name}Command extends Command
+	{
+	    /**
+	     * {@inheritdoc}
+	     */
+	    protected function configure()
+	    {
+	        $this
+	            ->setName('${2:namespace:cmd}')
+	            ->setDescription('${3:Full description}')
+	        ;
+	    }
+	
+	    /**
+	     * {@inheritdoc}
+	     */
+	    protected function execute(InputInterface $input, OutputInterface $output)
+	    {
+	        ${4:}
+	    }
+	}
+
