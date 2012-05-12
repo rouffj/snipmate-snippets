@@ -1,7 +1,7 @@
 snippet php
 	<?php
+
 	${1}
-	?>
 snippet phpil
 	<?php ${1} ?>
 snippet ec
@@ -67,16 +67,10 @@ snippet doc_v
 # Class
 snippet doc_c
 	/**
-	 * ${3:undocumented class}
+	 * ${1:undocumented class}
 	 *
-	 * @package ${4:default}
-	 * @subpackage ${5:default}
-	 * @author ${6:`g:snips_author`}
+	 * @author ${2:`g:snips_author`}
 	 */
-	${1:}class ${2:}
-	{
-		${7}
-	} // END $1class $2
 # Constant Definition - post doc
 snippet doc_dp
 	/**
@@ -142,6 +136,8 @@ snippet doc_i
 snippet class
 	/**
 	 * ${1}
+	 *
+	 * @author `g:snips_author`
 	 */
 	class ${2:ClassName}
 	{
@@ -247,37 +243,38 @@ snippet http_redirect
 	header ("Location: ".URL); 
 	exit();
 # Getters & Setters
-snippet getset
+snippet get
 	/**
 	 * Gets the value of ${1:}
 	 *
 	 * @return ${2}
 	 */
-	function get$1()
+	public function get$1()
 	{
-		return $this->_$1;
+		return $this->$1;
 	}
-
+snippet set
 	/**
-	 * Sets the value of $1
+	 * Sets the value of ${1:}
 	 *
 	 * @param mixed $$1 ${3}
 	 */
-	function set$1($$1)
+	public function set$1($$1)
 	{
-		$this->_$1 = $$1;
+		$this->$1 = $$1;
 	}
 # Symfony2
 snippet ns
 	namespace ${1:Vendor}\${2:Bundle}\${3:BundleName};
 snippet use
 	use ${1:Symfony}\${2:Component}\${3:ComponentName};
-snippet ftc
-	namespace ${1:Vendor}\Bundle\${2:BundleName}Bundle\Tests\Controller;
+# Tests
+snippet tc
+	namespace ${1:Vendor}\Bundle\${2:BundleName}Bundle\Tests\${3:Controller|Entity};
 	
-	use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+	use $1\Bundle\$2Bundle\Tests\${4:Web|Model|Repository}TestCase;
 	
-	class ${3:ControllerName}ControllerTest extends WebTestCase
+	class ${5:ClassName}Test extends $4TestCase
 	{
 	    public function setUp()
 	    {
@@ -318,3 +315,15 @@ snippet cmdc
 	    }
 	}
 
+snippet jtm
+	public function test${1:MethodName}_when${2:UseCaseDesc}_${3:result}()
+	{
+	    ${4:}
+	}
+snippet tm
+	public function test${1:MethodName}()
+	{
+	    ${2:}
+	}
+snippet assert
+	$this->assert${1:AssertType}(${2:$expectedValue}, ${3:$realValue});
