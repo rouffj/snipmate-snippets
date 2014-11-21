@@ -1,6 +1,6 @@
+snippet header
+	<?xml version="1.0" encoding="UTF-8"?>
 snippet container
-	<?xml version="1.0" ?>
-
 	<container xmlns="http://symfony.com/schema/dic/services"
 	    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
@@ -13,3 +13,22 @@ snippet service
 	<service id="${1:service_name}" class="${2:Class}">
 	    ${3:argument}
 	</service>
+snippet phpunit
+	<phpunit
+	    backupGlobals="false"
+	    backupStaticAttributes="false"
+	    colors="true"
+	    convertErrorsToExceptions="true"
+	    convertNoticesToExceptions="true"
+	    convertWarningsToExceptions="true"
+	    processIsolation="false"
+	    stopOnFailure="false"
+	    syntaxCheck="false"
+	    bootstrap="vendor/autoload.php"
+	>
+	    <testsuites>
+	        <testsuite name="all">
+	            <directory suffix="Test.php">./src/${1:vendor_name}/*/Tests/*</directory>
+	        </testsuite>
+	    </testsuites>
+	</phpunit>
