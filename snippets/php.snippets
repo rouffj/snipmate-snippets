@@ -245,6 +245,9 @@ snippet form_sub
 	    }
 	}
 
+snippet use
+	use ${1:Symfony}\${2:Component}\${3:ComponentName};
+
 snippet form_type
 	use Symfony\Component\Form\AbstractType;
 	use Symfony\Component\Form\FormBuilderInterface;
@@ -264,37 +267,22 @@ snippet form_type
 	            'data_class' => '${3:FQNToDomainClass}'
 	        ));
 	    }
-	
+
 	    public function getName()
 	    {
-	        return '$1';
-	    }
-	}
-snippet cform
-	$${2:article} = new ${1:Article}();
-	$form = $this->createForm(new $1Type(), $$2);
-	$request = $this->getRequest();
-
-	if ($request->getMethod() == 'POST') {
-	    $form->bindRequest($request);
-
-	    if ($form->isValid()) {
-		${3:}
+	        return 'app_$1';
 	    }
 	}
 
-snippet cmdc
-	use Symfony\Component\Console\Command\Command;
+snippet cmd
+	use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 	use Symfony\Component\Console\Input\InputOption;
 	use Symfony\Component\Console\Input\InputInterface;
 	use Symfony\Component\Console\Output\OutputInterface;
 	use Symfony\Component\Console\Output\Output;
 	
-	class ${1:Name}Command extends Command
+	class ${1:Name}Command extends ContainerAwareCommand
 	{
-	    /**
-	     * {@inheritdoc}
-	     */
 	    protected function configure()
 	    {
 	        $this
@@ -303,43 +291,41 @@ snippet cmdc
 	        ;
 	    }
 	
-	    /**
-	     * {@inheritdoc}
-	     */
 	    protected function execute(InputInterface $input, OutputInterface $output)
 	    {
 	        ${4:}
 	    }
 	}
-snippet addopt
+snippet cmd_addOpt
 	->addOption('${1:opt-name}', ${2:'shortcut'}, InputOption::VALUE_${3:REQUIRED|OPTIONAL}, '${4:option description}')
-snippet addarg
+snippet cmd_addArg
 	->addArgument('${1:arg-name}', InputArgument::${2:REQUIRED|OPTIONAL}, '${3:argument description}')
-snippet repoc
+
+# Doctrine
+snippet repo
 	use Doctrine\ORM\EntityRepository;
 	
 	class ${1:RepoName}Repository extends EntityRepository
 	{
 	    public function find${2:methodName}()
 	    {
-	        //return $this->getEntityManager()->createQuery('SELECT p FROM AcmeStoreBundle:Product p ORDER BY p.name ASC')->getResult();
+	        //return $this->getEntityManager()->createQuery('SELECT p FROM AppBundle:Product p ORDER BY p.name ASC')->getResult();
 	    }
 	}
 
 snippet echo_response
 	print_r($this->client->getResponse()->getContent());die;
-snippet dumper
-	die(\Symfony\Component\VarDumper\VarDumper::dump(${1:myVar}));
-
 
 # Doctrine
+snippet dumper
+	\Symfony\Component\VarDumper\VarDumper::dump(${1:myVar});
+
 snippet dump
 	\Doctrine\Common\Util\Debug::dump(${1:entityToDump});
+
 # Tests
-snippet tc
-	namespace ${1:Vendor}\Bundle\${2:BundleName}Bundle\Tests\${3:Controller|Entity};
-	
-	use $1\Bundle\$2Bundle\Tests\${4:Web|Model|Repository}TestCase;
+snippet test_f
+	use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 	
 	class ${5:ClassName}Test extends \PHPUnit_Framework_TestCase
 	{
@@ -352,18 +338,17 @@ snippet tc
 	    }
 	}
 
-snippet jtm
-	public function test${1:MethodName}_when${2:UseCaseDesc}_${3:result}()
-	{
-	    ${4:}
-	}
-snippet tm
+snippet test_m
 	public function test${1:MethodName}()
 	{
 	    ${2:}
 	}
-snippet assert
+
+snippet test_a
 	$this->assert${1:AssertType}(${2:$expectedValue}, ${3:$realValue});
+
+snippet test_a2
+	$this->assert${1:AssertType}(${2:$realValue});
 
 snippet inspect
 	$class = new \ReflectionClass(${1:$this});
