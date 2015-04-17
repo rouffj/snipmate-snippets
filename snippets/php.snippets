@@ -85,13 +85,6 @@ snippet doc_f
 	${1}function ${2}(${3})
 	{${7}
 	}
-# Header
-snippet doc_author
-	@author Joseph Rouff <rouffj@gmail.com>
-snippet doc_param
-	@param ${1:type} ${2:$varName} ${3:param description}
-snippet doc_return
-	@return ${1:type} ${2:description}
 # class ...
 snippet class
 	/**
@@ -202,6 +195,11 @@ snippet http_redirect
 	header ("HTTP/1.1 301 Moved Permanently"); 
 	header ("Location: ".URL); 
 	exit();
+
+
+
+## Perso
+
 # Getters & Setters
 snippet get
 	/**
@@ -365,3 +363,15 @@ snippet inspect
 	}
 	die;
 	${2}
+
+# Docs
+snippet doc_author
+	@author Joseph Rouff <rouffj@gmail.com>
+snippet doc_param
+	@param ${1:type} ${2:$varName} ${3:param description}
+snippet doc_return
+	@return ${1:type} ${2:description}
+snippet doc_inh
+	/**
+	 * {@inheritDoc}
+	 */

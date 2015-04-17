@@ -1,2 +1,6 @@
 snippet mysql_export_csv
 	INTO OUTFILE '/tmp/${1:file}.csv' FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n'
+snippet mysql_list_user
+	SELECT Host, User FROM mysql.user;
+snippet mysql_grants
+	SHOW GRANTS FOR ${1:mysql_user}@${2:connected_from};

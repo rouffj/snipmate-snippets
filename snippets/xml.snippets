@@ -1,18 +1,6 @@
 snippet header
 	<?xml version="1.0" encoding="UTF-8"?>
-snippet container
-	<container xmlns="http://symfony.com/schema/dic/services"
-	    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
-	
-	    <services>
-	        ${1:service}
-	    </services>
-	</container>
-snippet service
-	<service id="${1:service_name}" class="${2:Class}">
-	    ${3:argument}
-	</service>
+
 snippet phpunit
 	<phpunit
 	    backupGlobals="false"
@@ -32,3 +20,28 @@ snippet phpunit
 	        </testsuite>
 	    </testsuites>
 	</phpunit>
+
+# Symfony2 DIC
+snippet container
+	<container xmlns="http://symfony.com/schema/dic/services"
+	    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+	
+	    <services>
+	        ${1:service}
+	    </services>
+	</container>
+snippet service
+	<service id="${1:service_name}" class="${2:Class}">
+	    ${3:argument}
+	</service>
+snippet service_factory
+	<service id="${1:name}" class="${2:TypeObjectReturnedByFactory}" factory-service="${factoryId}" factory-method="${3:getRepository}">
+	    ${4:argument}
+	</service>
+snippet call
+	<call method="${1:method}">
+	    ${2:argument}
+	</call>
+snippet argument
+	<argument type="${1:string/service/collection}"></argument>
